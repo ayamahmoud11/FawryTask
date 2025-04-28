@@ -1,0 +1,27 @@
+How the script handles inputs?
+The script starts by checking if the --help option is provided.
+
+Then, it checks for the options (-n, -v).
+
+Afterwards, it takes the search string and the filename.
+
+If the file is not found or there are missing inputs, it shows an appropriate error message.
+
+
+
+What if I want to add support for regex or additional options (-i / -c / -l)?
+I would use tools like grep itself instead of manually comparing lines.
+
+I would rewrite the search part to accept regular expressions.
+
+I would add support for -c (count lines), -l (show filename only if there's a match), and other options.
+
+I can replace the manual loop with pre-built commands like:
+
+grep -i -n -v "$pattern" "$file"
+
+
+What was the hardest part to implement?
+The hardest part was handling the combination of the -v and -n options correctly without any errors in the result.
+
+Also, figuring out how to invert the result when using -v in a clean way, without complicating the logic.
