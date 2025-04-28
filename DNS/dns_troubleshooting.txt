@@ -1,0 +1,33 @@
+DNS Troubleshooting for internal.example.com
+1. Verify DNS Resolution
+nslookup internal.example.com
+
+2. Compare Your DNS with Google DNS 
+nslookup internal.example.com 8.8.8.8
+
+3. Check if the Server is Responding on Port:
+curl -I http://10.0.0.5
+telnet 10.0.0.5 80
+
+ 4. Trace the Path:
+tracert internal.example.com
+
+
+5. Potential Causes for Unreachability:
+
+Cause	How to Verify
+DNS Issue	nslookup fails to resolve the domain name
+Network Issue	tracert stops before reaching the destination
+Server Not Listening on Ports	telnet or curl fails to connect
+Firewall Blocking	No response or connection refused
+Service Down (but running internally)	Service works internally but is not visible externally
+Incorrect IP Configuration	ipconfig shows incorrect or missing IP
+
+
+6. Proposed Fixes:
+
+Issue	Fix
+DNS Not Working	Change DNS manually to 8.8.8.8
+Service Not Listening on Port	Start the service or open the port
+Firewall Blocking	Adjust firewall settings to allow the port
+Service Not Reachable Externally	Ensure service is accessible outside the network
